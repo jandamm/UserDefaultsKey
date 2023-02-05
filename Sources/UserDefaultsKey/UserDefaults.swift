@@ -17,6 +17,14 @@ public extension UserDefaults {
 		value(forKey: key.key) as? Value ?? key.defaultValue()
 	}
 
+	func any<Value>(for key: Key<Value>) -> Any? {
+		object(forKey: key.key)
+	}
+
+	func any<Value>(for key: DefaultValueKey<Value>) -> Any {
+		object(forKey: key.key) ?? key.defaultValue()
+	}
+
 	func setValue<Value>(_ value: Value, for key: Key<Value>) {
 		setValue(value, forKey: key.key)
 	}
