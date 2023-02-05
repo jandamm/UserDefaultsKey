@@ -6,7 +6,7 @@ class UserDefaultsTests: TestCase {
 		XCTAssertEqual(defaults.integer(forKey: UserDefaults.Key.int.key), 0)
 		XCTAssertEqual(defaults.integer(for: .int), 0)
 
-		defaults.setValue(12, for: .int)
+		defaults.set(12, for: .int)
 		XCTAssertEqual(defaults.integer(forKey: UserDefaults.Key.int.key), 12)
 		XCTAssertEqual(defaults.integer(for: .int), 12)
 	}
@@ -16,7 +16,7 @@ class UserDefaultsTests: TestCase {
 		XCTAssertEqual(defaults.integer(for: .intValue), 42)
 		XCTAssertEqual(defaults.integer(forKey: UserDefaults.DefaultValueKey.intValue.key), 0)
 
-		defaults.setValue(12, for: .intValue)
+		defaults.set(12, for: .intValue)
 		XCTAssertEqual(defaults.integer(for: .intValue), 12)
 		XCTAssertEqual(defaults.integer(forKey: UserDefaults.DefaultValueKey.intValue.key), 12)
 
@@ -25,7 +25,7 @@ class UserDefaultsTests: TestCase {
 		XCTAssertEqual(defaults.float(forKey: UserDefaults.DefaultValueKey.floatValue.key), 0)
 
 
-		defaults.setValue(12, for: UserDefaults.Key<Int>("floatValue"))
+		defaults.set(12, for: UserDefaults.Key<Int>("floatValue"))
 		XCTAssertEqual(defaults.float(for: .floatValue), 12)
 		XCTAssertEqual(defaults.float(forKey: UserDefaults.DefaultValueKey.floatValue.key), 12)
 	}

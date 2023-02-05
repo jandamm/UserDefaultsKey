@@ -9,36 +9,12 @@ public extension UserDefaults {
 		removeObject(forKey: key.key)
 	}
 
-	func value<Value>(for key: Key<Value>) -> Value? {
-		value(forKey: key.key) as? Value
-	}
-
-	func value<Value>(for key: DefaultValueKey<Value>) -> Value {
-		value(forKey: key.key) as? Value ?? key.defaultValue()
-	}
-
 	func any<Value>(for key: Key<Value>) -> Any? {
 		object(forKey: key.key)
 	}
 
 	func any<Value>(for key: DefaultValueKey<Value>) -> Any {
 		object(forKey: key.key) ?? key.defaultValue()
-	}
-
-	func setValue<Value>(_ value: Value, for key: Key<Value>) {
-		setValue(value, forKey: key.key)
-	}
-
-	func setValue<Value>(_ value: Value, for key: DefaultValueKey<Value>) {
-		setValue(value, forKey: key.key)
-	}
-
-	func setNilValueForKey<Value>(_ key: Key<Value>) {
-		setNilValueForKey(key.key)
-	}
-
-	func setNilValueForKey<Value>(_ key: DefaultValueKey<Value>) {
-		setNilValueForKey(key.key)
 	}
 
 	/**
