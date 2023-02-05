@@ -3,45 +3,45 @@ import Foundation
 public extension UserDefaults {
 	/// -stringForKey: is equivalent to -objectForKey:, except that it will convert NSNumber values to their NSString representation. If a non-string non-number value is found, the default value will be returned.
 	func string(for key: DefaultValueKey<String>) -> String {
-		return string(forKey: key.key) ?? key.defaultValue()
+		string(forKey: key.key) ?? key.defaultValue()
 	}
 
 	/// -arrayForKey: is equivalent to -objectForKey:, except that it will return the default value if the value is not an NSArray.
 	func array<V>(for key: DefaultValueKey<[V]>) -> [V] {
-		return array(forKey: key.key) as? [V] ?? key.defaultValue()
+		array(forKey: key.key) as? [V] ?? key.defaultValue()
 	}
 
 	/// -dictionaryForKey: is equivalent to -objectForKey:, except that it will return the default value if the value is not an NSDictionary.
 	func dictionary<V>(for key: DefaultValueKey<[String: V]>) -> [String: V] {
-		return dictionary(forKey: key.key) as? [String: V] ?? key.defaultValue()
+		dictionary(forKey: key.key) as? [String: V] ?? key.defaultValue()
 	}
 
 	/// -dataForKey: is equivalent to -objectForKey:, except that it will return the default value if the value is not an NSData.
 	func data(for key: DefaultValueKey<Data>) -> Data {
-		return data(forKey: key.key) ?? key.defaultValue()
+		data(forKey: key.key) ?? key.defaultValue()
 	}
 
 	/// -stringForKey: is equivalent to -objectForKey:, except that it will return the default value if the value is not an NSArray<NSString *>. Note that unlike -stringForKey:, NSNumbers are not converted to NSStrings.
 	func stringArray(for key: DefaultValueKey<[String]>) -> [String] {
-		return stringArray(forKey: key.key) ?? key.defaultValue()
+		stringArray(forKey: key.key) ?? key.defaultValue()
 	}
 
 	func object<Object>(for key: DefaultValueKey<Object>) -> Object {
-		return object(forKey: key.key) as? Object ?? key.defaultValue()
+		object(forKey: key.key) as? Object ?? key.defaultValue()
 	}
 
 	func integer(for key: DefaultValueKey<Int>) -> Int {
-		return object(for: key)
+		object(for: key)
 	}
 
 	/// -floatForKey: is similar to -integerForKey:, except that it returns a float, and boolean values will not be converted.
 	func float(for key: DefaultValueKey<Float>) -> Float {
-		return object(for: key)
+		object(for: key)
 	}
 
 	/// -doubleForKey: is similar to -integerForKey:, except that it returns a double, and boolean values will not be converted.
 	func double(for key: DefaultValueKey<Double>) -> Double {
-		return object(for: key)
+		object(for: key)
 	}
 
 	/**
@@ -49,7 +49,7 @@ public extension UserDefaults {
 
 	 */
 	func bool(for key: DefaultValueKey<Bool>) -> Bool {
-		return object(for: key)
+		object(for: key)
 	}
 
 	/**
@@ -57,6 +57,6 @@ public extension UserDefaults {
 	 */
 	@available(iOS 4.0, *)
 	func url(for key: DefaultValueKey<URL>) -> URL {
-		return url(forKey: key.key) ?? key.defaultValue()
+		url(forKey: key.key) ?? key.defaultValue()
 	}
 }
