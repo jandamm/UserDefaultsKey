@@ -15,3 +15,11 @@ extension UserDefaults.Key where Value == Int {
 extension UserDefaults.Key where Value == Float {
 	static let float = Self("float")
 }
+
+enum SomeValue: String {
+	case first, second, third
+}
+
+extension UserDefaults.DefaultValueKey where Value == SomeValue {
+	static let someValue = Self("someValue", defaultValue: .second)
+}

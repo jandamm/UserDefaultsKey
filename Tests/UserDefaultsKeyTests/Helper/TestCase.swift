@@ -1,19 +1,21 @@
 import XCTest
 
-class TestCase: XCTestCase {
-	static let suiteName = "userdefaultskey-test-suite"
-	static let defaults: UserDefaults? = UserDefaults(suiteName: suiteName)
+extension UserDefaults {
+	fileprivate static let suiteName = "userdefaultskey-test-suite"
+	static let testSuite = UserDefaults(suiteName: suiteName)
+}
 
+class TestCase: XCTestCase {
 	var defaults: UserDefaults!
 
 	override func setUp() {
 		super.setUp()
-		defaults = Self.defaults
+		defaults = .testSuite
 	}
 
 	override func tearDown() {
 		super.tearDown()
-		defaults.removePersistentDomain(forName: Self.suiteName)
+		defaults.removePersistentDomain(forName: UserDefaults.suiteName)
 		defaults = nil
 	}
 }

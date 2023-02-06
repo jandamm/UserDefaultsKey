@@ -5,8 +5,8 @@ import SwiftUI
 class AppStorageTests: TestCase {
 	func testAppStorage() {
 		struct V: View {
-			@AppStorage(.intValue, store: AppStorageTests.defaults) var intValue
-			@AppStorage(.int, store: AppStorageTests.defaults) var int = 1
+			@AppStorage(.intValue, store: .testSuite) var intValue
+			@AppStorage(.int, store: .testSuite) var int = 1
 			var body: some View { EmptyView() }
 		}
 
