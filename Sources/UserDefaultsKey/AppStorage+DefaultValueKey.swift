@@ -1,7 +1,7 @@
 #if canImport(SwiftUI)
 	import SwiftUI
 
-@available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
+	@available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
 	public extension AppStorage {
 		/// Creates a property that can read and write to a boolean user default.
 		///
@@ -128,91 +128,97 @@
 		/// Creates a property that can read and write an Optional boolean user
 		/// default.
 		///
-		/// Defaults to nil if there is no restored value.
+		/// **Warning: The default value will be written**
+		/// It's currently not possible to initialize an AppStorage with an optional value and a default value.
 		///
 		/// - Parameters:
 		///   - key: The key to read and write the value to in the user defaults
 		///     store.
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
-		init(_ key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == Bool? {
+		init(storingDefaultValueFor key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == Bool? {
 			self.init(key.key, store: store)
-			self.wrappedValue = key.defaultValue()
+			wrappedValue = key.defaultValue()
 		}
 
 		/// Creates a property that can read and write an Optional integer user
 		/// default.
 		///
-		/// Defaults to nil if there is no restored value.
+		/// **Warning: The default value will be written**
+		/// It's currently not possible to initialize an AppStorage with an optional value and a default value.
 		///
 		/// - Parameters:
 		///   - key: The key to read and write the value to in the user defaults
 		///     store.
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
-		init(_ key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == Int? {
+		init(storingDefaultValueFor key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == Int? {
 			self.init(key.key, store: store)
-			self.wrappedValue = key.defaultValue()
+			wrappedValue = key.defaultValue()
 		}
 
 		/// Creates a property that can read and write an Optional double user
 		/// default.
 		///
-		/// Defaults to nil if there is no restored value.
+		/// **Warning: The default value will be written**
+		/// It's currently not possible to initialize an AppStorage with an optional value and a default value.
 		///
 		/// - Parameters:
 		///   - key: The key to read and write the value to in the user defaults
 		///     store.
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
-		init(_ key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == Double? {
+		init(storingDefaultValueFor key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == Double? {
 			self.init(key.key, store: store)
-			self.wrappedValue = key.defaultValue()
+			wrappedValue = key.defaultValue()
 		}
 
 		/// Creates a property that can read and write an Optional string user
 		/// default.
 		///
-		/// Defaults to nil if there is no restored value.
+		/// **Warning: The default value will be written**
+		/// It's currently not possible to initialize an AppStorage with an optional value and a default value.
 		///
 		/// - Parameters:
 		///   - key: The key to read and write the value to in the user defaults
 		///     store.
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
-		init(_ key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == String? {
+		init(storingDefaultValueFor key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == String? {
 			self.init(key.key, store: store)
-			self.wrappedValue = key.defaultValue()
+			wrappedValue = key.defaultValue()
 		}
 
 		/// Creates a property that can read and write an Optional URL user
 		/// default.
 		///
-		/// Defaults to nil if there is no restored value.
+		/// **Warning: The default value will be written**
+		/// It's currently not possible to initialize an AppStorage with an optional value and a default value.
 		///
 		/// - Parameters:
 		///   - key: The key to read and write the value to in the user defaults
 		///     store.
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
-		init(_ key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == URL? {
+		init(storingDefaultValueFor key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == URL? {
 			self.init(key.key, store: store)
-			self.wrappedValue = key.defaultValue()
+			wrappedValue = key.defaultValue()
 		}
 
 		/// Creates a property that can read and write an Optional data user
 		/// default.
 		///
-		/// Defaults to nil if there is no restored value.
+		/// **Warning: The default value will be written**
+		/// It's currently not possible to initialize an AppStorage with an optional value and a default value.
 		///
 		/// - Parameters:
 		///   - key: The key to read and write the value to in the user defaults
 		///     store.
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
-		init(_ key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == Data? {
+		init(storingDefaultValueFor key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == Data? {
 			self.init(key.key, store: store)
-			self.wrappedValue = key.defaultValue()
+			wrappedValue = key.defaultValue()
 		}
 	}
 
@@ -240,9 +246,9 @@
 		///     store.
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
-		init<R>(_ key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == R?, R: RawRepresentable, R.RawValue == String {
+		init<R>(storingDefaultValueFor key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == R?, R: RawRepresentable, R.RawValue == String {
 			self.init(key.key, store: store)
-			self.wrappedValue = key.defaultValue()
+			wrappedValue = key.defaultValue()
 		}
 
 		/// Creates a property that can save and restore an Optional integer,
@@ -267,9 +273,9 @@
 		///     store.
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
-		init<R>(_ key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == R?, R: RawRepresentable, R.RawValue == Int {
+		init<R>(storingDefaultValueFor key: UserDefaults.DefaultValueKey<Value>, store: UserDefaults? = nil) where Value == R?, R: RawRepresentable, R.RawValue == Int {
 			self.init(key.key, store: store)
-			self.wrappedValue = key.defaultValue()
+			wrappedValue = key.defaultValue()
 		}
 	}
 

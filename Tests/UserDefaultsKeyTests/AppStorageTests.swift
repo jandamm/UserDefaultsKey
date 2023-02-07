@@ -30,6 +30,7 @@ class AppStorageTests: TestCase {
 
 	func testAppStorageWithOptional() {
 		struct V: View {
+			@AppStorage(storingDefaultValueFor: .optionalValue, store: .testSuite) var optionalValue
 			@AppStorage(.optional, store: .testSuite) var optional
 			var body: some View { EmptyView() }
 		}
@@ -38,5 +39,9 @@ class AppStorageTests: TestCase {
 
 		XCTAssertNil(view.optional)
 		XCTAssertNil(defaults.object(for: .optional))
+
+		XCTAssertEqual(view.optionalValue, 42)
+		XCTAssertEqual(defaults.object(for: .optionalValue), 42)
+		XCTAssertEqual(defaults.integer(forKey: UserDefaults.DefaultValueKey.optionalValue.key), 42)
 	}
 }

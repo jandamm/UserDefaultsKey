@@ -8,6 +8,10 @@ extension UserDefaults.DefaultValueKey where Value == Float {
 	static let floatValue = Self("floatValue", defaultValue: 1337)
 }
 
+extension UserDefaults.DefaultValueKey where Value == Int? {
+	static let optionalValue = Self("optionalValue", defaultValue: 42)
+}
+
 extension UserDefaults.Key where Value == Int {
 	static let int = Self("int")
 }
