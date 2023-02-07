@@ -1,5 +1,5 @@
-import XCTest
 @testable import UserDefaultsKey
+import XCTest
 
 class UserDefaultsTests: TestCase {
 	func testKey() {
@@ -23,7 +23,6 @@ class UserDefaultsTests: TestCase {
 		XCTAssertEqual(defaults.float(forKey: UserDefaults.DefaultValueKey.floatValue.key), 0)
 		XCTAssertEqual(defaults.float(for: .floatValue), 1337)
 		XCTAssertEqual(defaults.float(forKey: UserDefaults.DefaultValueKey.floatValue.key), 0)
-
 
 		defaults.set(12, for: UserDefaults.Key<Int>("floatValue"))
 		XCTAssertEqual(defaults.float(for: .floatValue), 12)
