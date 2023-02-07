@@ -30,6 +30,10 @@ public extension UserDefaults {
 		object(forKey: key.key) as? Object
 	}
 
+	func object<Object>(for key: Key<Object?>) -> Object? {
+		object(forKey: key.key) as? Object
+	}
+
 	func integer(for key: Key<Int>) -> Int {
 		integer(forKey: key.key)
 	}

@@ -1,6 +1,6 @@
-import XCTest
 import SwiftUI
 @testable import UserDefaultsKey
+import XCTest
 
 class AppStorageTests: TestCase {
 	func testAppStorage() {
@@ -13,7 +13,11 @@ class AppStorageTests: TestCase {
 		let view = V()
 
 		XCTAssertEqual(view.int, 1)
+		XCTAssertEqual(defaults.integer(for: .int), 0)
+
 		XCTAssertEqual(view.intValue, 42)
+		XCTAssertEqual(defaults.integer(for: .intValue), 42)
+		XCTAssertEqual(defaults.integer(forKey: UserDefaults.DefaultValueKey.intValue.key), 0)
 
 		view.int = 3
 		XCTAssertEqual(view.int, 3)
@@ -22,5 +26,17 @@ class AppStorageTests: TestCase {
 		defaults.set(5, for: .intValue)
 		XCTAssertEqual(view.intValue, 5)
 		XCTAssertEqual(defaults.integer(for: .intValue), 5)
+	}
+
+	func testAppStorageWithOptional() {
+		struct V: View {
+			@AppStorage(.optional, store: .testSuite) var optional
+			var body: some View { EmptyView() }
+		}
+
+		let view = V()
+
+		XCTAssertNil(view.optional)
+		XCTAssertNil(defaults.object(for: .optional))
 	}
 }
