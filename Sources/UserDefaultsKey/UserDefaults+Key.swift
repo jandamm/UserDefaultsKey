@@ -3,49 +3,49 @@ import Foundation
 public extension UserDefaults {
 	/// -stringForKey: is equivalent to -objectForKey:, except that it will convert NSNumber values to their NSString representation. If a non-string non-number value is found, nil will be returned.
 	func string(for key: Key<String>) -> String? {
-		string(forKey: key.key)
+		string(forKey: key.rawKey)
 	}
 
 	/// -arrayForKey: is equivalent to -objectForKey:, except that it will nil if the value is not an NSArray.
 	func array<V>(for key: Key<[V]>) -> [V]? {
-		array(forKey: key.key) as? [V]
+		array(forKey: key.rawKey) as? [V]
 	}
 
 	/// -dictionaryForKey: is equivalent to -objectForKey:, except that it will nil if the value is not an NSDictionary.
 	func dictionary<V>(for key: Key<[String: V]>) -> [String: V]? {
-		dictionary(forKey: key.key) as? [String: V]
+		dictionary(forKey: key.rawKey) as? [String: V]
 	}
 
 	/// -dataForKey: is equivalent to -objectForKey:, except that it will nil if the value is not an NSData.
 	func data(for key: Key<Data>) -> Data? {
-		data(forKey: key.key)
+		data(forKey: key.rawKey)
 	}
 
 	/// -stringForKey: is equivalent to -objectForKey:, except that it will nil if the value is not an NSArray<NSString *>. Note that unlike -stringForKey:, NSNumbers are not converted to NSStrings.
 	func stringArray(for key: Key<[String]>) -> [String]? {
-		stringArray(forKey: key.key)
+		stringArray(forKey: key.rawKey)
 	}
 
 	func object<Object>(for key: Key<Object>) -> Object? {
-		object(forKey: key.key) as? Object
+		object(forKey: key.rawKey) as? Object
 	}
 
 	func object<Object>(for key: Key<Object?>) -> Object? {
-		object(forKey: key.key) as? Object
+		object(forKey: key.rawKey) as? Object
 	}
 
 	func integer(for key: Key<Int>) -> Int {
-		integer(forKey: key.key)
+		integer(forKey: key.rawKey)
 	}
 
 	/// -floatForKey: is similar to -integerForKey:, except that it returns a float, and boolean values will not be converted.
 	func float(for key: Key<Int>) -> Float {
-		float(forKey: key.key)
+		float(forKey: key.rawKey)
 	}
 
 	/// -doubleForKey: is similar to -integerForKey:, except that it returns a double, and boolean values will not be converted.
 	func double(for key: Key<Double>) -> Double {
-		double(forKey: key.key)
+		double(forKey: key.rawKey)
 	}
 
 	/**
@@ -53,7 +53,7 @@ public extension UserDefaults {
 
 	 */
 	func bool(for key: Key<Bool>) -> Bool {
-		bool(forKey: key.key)
+		bool(forKey: key.rawKey)
 	}
 
 	/**
@@ -61,6 +61,6 @@ public extension UserDefaults {
 	 */
 	@available(iOS 4.0, *)
 	func url(for key: Key<URL>) -> URL? {
-		url(forKey: key.key)
+		url(forKey: key.rawKey)
 	}
 }

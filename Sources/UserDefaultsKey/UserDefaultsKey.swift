@@ -2,14 +2,17 @@ import Foundation
 
 public extension UserDefaults {
 	struct Key<Value>: Sendable, Equatable {
-		let key: String
+		/// The key used to store in UserDefaults.
+		/// Use this to extend UserDefaults or AppStorage for custom storage strategies.
+		/// It's not recommended to use it to access values.
+		public let rawKey: String
 
-		public init(_ key: String) {
-			self.key = key
+		public init(_ rawKey: String) {
+			self.rawKey = rawKey
 		}
 
-		public init(_ key: String, value _: Value.Type) {
-			self.init(key)
+		public init(_ rawKey: String, value _: Value.Type) {
+			self.init(rawKey)
 		}
 	}
 
@@ -17,6 +20,10 @@ public extension UserDefaults {
 		let key: String
 		private let _defaultValue: @Sendable () -> Value
 
+		/// The key used to store in UserDefaults.
+		/// Use this to extend UserDefaults or AppStorage for custom storage strategies.
+		/// It's not recommended to use it to access values.
+		public var rawKey: String { key }
 		/// The value which is used when no value is stored in UserDefaults.
 		public var defaultValue: Value { _defaultValue() }
 

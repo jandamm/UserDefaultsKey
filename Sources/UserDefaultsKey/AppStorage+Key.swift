@@ -24,7 +24,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init(wrappedValue: Value, _ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value == Bool {
-			self.init(wrappedValue: wrappedValue, key.key, store: store)
+			self.init(wrappedValue: wrappedValue, key.rawKey, store: store)
 		}
 
 		/// Creates a property that can read and write to an integer user default.
@@ -37,7 +37,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init(wrappedValue: Value, _ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value == Int {
-			self.init(wrappedValue: wrappedValue, key.key, store: store)
+			self.init(wrappedValue: wrappedValue, key.rawKey, store: store)
 		}
 
 		/// Creates a property that can read and write to a double user default.
@@ -50,7 +50,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init(wrappedValue: Value, _ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value == Double {
-			self.init(wrappedValue: wrappedValue, key.key, store: store)
+			self.init(wrappedValue: wrappedValue, key.rawKey, store: store)
 		}
 
 		/// Creates a property that can read and write to a string user default.
@@ -63,7 +63,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init(wrappedValue: Value, _ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value == String {
-			self.init(wrappedValue: wrappedValue, key.key, store: store)
+			self.init(wrappedValue: wrappedValue, key.rawKey, store: store)
 		}
 
 		/// Creates a property that can read and write to a url user default.
@@ -76,7 +76,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init(wrappedValue: Value, _ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value == URL {
-			self.init(wrappedValue: wrappedValue, key.key, store: store)
+			self.init(wrappedValue: wrappedValue, key.rawKey, store: store)
 		}
 
 		/// Creates a property that can read and write to a user default as data.
@@ -94,7 +94,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init(wrappedValue: Value, _ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value == Data {
-			self.init(wrappedValue: wrappedValue, key.key, store: store)
+			self.init(wrappedValue: wrappedValue, key.rawKey, store: store)
 		}
 
 		/// Creates a property that can read and write to an integer user default,
@@ -120,7 +120,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init(wrappedValue: Value, _ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value: RawRepresentable, Value.RawValue == Int {
-			self.init(wrappedValue: wrappedValue, key.key, store: store)
+			self.init(wrappedValue: wrappedValue, key.rawKey, store: store)
 		}
 
 		/// Creates a property that can read and write to a string user default,
@@ -146,7 +146,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init(wrappedValue: Value, _ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value: RawRepresentable, Value.RawValue == String {
-			self.init(wrappedValue: wrappedValue, key.key, store: store)
+			self.init(wrappedValue: wrappedValue, key.rawKey, store: store)
 		}
 	}
 
@@ -163,7 +163,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init(_ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value == Bool? {
-			self.init(key.key, store: store)
+			self.init(key.rawKey, store: store)
 		}
 
 		/// Creates a property that can read and write an Optional integer user
@@ -177,7 +177,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init(_ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value == Int? {
-			self.init(key.key, store: store)
+			self.init(key.rawKey, store: store)
 		}
 
 		/// Creates a property that can read and write an Optional double user
@@ -191,7 +191,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init(_ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value == Double? {
-			self.init(key.key, store: store)
+			self.init(key.rawKey, store: store)
 		}
 
 		/// Creates a property that can read and write an Optional string user
@@ -205,7 +205,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init(_ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value == String? {
-			self.init(key.key, store: store)
+			self.init(key.rawKey, store: store)
 		}
 
 		/// Creates a property that can read and write an Optional URL user
@@ -219,7 +219,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init(_ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value == URL? {
-			self.init(key.key, store: store)
+			self.init(key.rawKey, store: store)
 		}
 
 		/// Creates a property that can read and write an Optional data user
@@ -233,7 +233,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init(_ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value == Data? {
-			self.init(key.key, store: store)
+			self.init(key.rawKey, store: store)
 		}
 	}
 
@@ -262,7 +262,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init<R>(_ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value == R?, R: RawRepresentable, R.RawValue == String {
-			self.init(key.key, store: store)
+			self.init(key.rawKey, store: store)
 		}
 
 		/// Creates a property that can save and restore an Optional integer,
@@ -288,7 +288,7 @@
 		///   - store: The user defaults store to read and write to. A value
 		///     of `nil` will use the user default store from the environment.
 		init<R>(_ key: UserDefaults.Key<Value>, store: UserDefaults? = nil) where Value == R?, R: RawRepresentable, R.RawValue == Int {
-			self.init(key.key, store: store)
+			self.init(key.rawKey, store: store)
 		}
 	}
 

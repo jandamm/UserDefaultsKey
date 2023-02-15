@@ -3,11 +3,11 @@ import XCTest
 
 class UserDefaultsTests: TestCase {
 	func testKey() {
-		XCTAssertEqual(defaults.integer(forKey: UserDefaults.Key.int.key), 0)
+		XCTAssertEqual(defaults.integer(forKey: UserDefaults.Key.int.rawKey), 0)
 		XCTAssertEqual(defaults.integer(for: .int), 0)
 
 		defaults.set(12, for: .int)
-		XCTAssertEqual(defaults.integer(forKey: UserDefaults.Key.int.key), 12)
+		XCTAssertEqual(defaults.integer(forKey: UserDefaults.Key.int.rawKey), 12)
 		XCTAssertEqual(defaults.integer(for: .int), 12)
 	}
 

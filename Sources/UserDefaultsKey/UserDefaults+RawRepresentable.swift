@@ -1,6 +1,6 @@
 public extension UserDefaults {
 	func object<Object: RawRepresentable>(for key: Key<Object>) -> Object? {
-		guard let raw = object(forKey: key.key) as? Object.RawValue else { return nil }
+		guard let raw = object(forKey: key.rawKey) as? Object.RawValue else { return nil }
 		return Object(rawValue: raw)
 	}
 
@@ -10,7 +10,7 @@ public extension UserDefaults {
 	}
 
 	func rawValue<Object: RawRepresentable>(for key: Key<Object>) -> Object.RawValue? {
-		object(forKey: key.key) as? Object.RawValue
+		object(forKey: key.rawKey) as? Object.RawValue
 	}
 
 	func rawValue<Object: RawRepresentable>(for key: DefaultValueKey<Object>) -> Object.RawValue {
@@ -18,7 +18,7 @@ public extension UserDefaults {
 	}
 
 	func set<Value: RawRepresentable>(_ value: Value, for key: Key<Value>) {
-		set(value.rawValue, forKey: key.key)
+		set(value.rawValue, forKey: key.rawKey)
 	}
 
 	func set<Value: RawRepresentable>(_ value: Value, for key: DefaultValueKey<Value>) {
