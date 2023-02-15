@@ -1,4 +1,4 @@
-@testable import UserDefaultsKey
+import UserDefaultsKey
 import XCTest
 
 class UserDefaultsTests: TestCase {
@@ -12,20 +12,20 @@ class UserDefaultsTests: TestCase {
 	}
 
 	func testDefaultValueKey() {
-		XCTAssertEqual(defaults.integer(forKey: UserDefaults.DefaultValueKey.intValue.key), 0)
+		XCTAssertEqual(defaults.integer(forKey: UserDefaults.DefaultValueKey.intValue.rawKey), 0)
 		XCTAssertEqual(defaults.integer(for: .intValue), 42)
-		XCTAssertEqual(defaults.integer(forKey: UserDefaults.DefaultValueKey.intValue.key), 0)
+		XCTAssertEqual(defaults.integer(forKey: UserDefaults.DefaultValueKey.intValue.rawKey), 0)
 
 		defaults.set(12, for: .intValue)
 		XCTAssertEqual(defaults.integer(for: .intValue), 12)
-		XCTAssertEqual(defaults.integer(forKey: UserDefaults.DefaultValueKey.intValue.key), 12)
+		XCTAssertEqual(defaults.integer(forKey: UserDefaults.DefaultValueKey.intValue.rawKey), 12)
 
-		XCTAssertEqual(defaults.float(forKey: UserDefaults.DefaultValueKey.floatValue.key), 0)
+		XCTAssertEqual(defaults.float(forKey: UserDefaults.DefaultValueKey.floatValue.rawKey), 0)
 		XCTAssertEqual(defaults.float(for: .floatValue), 1337)
-		XCTAssertEqual(defaults.float(forKey: UserDefaults.DefaultValueKey.floatValue.key), 0)
+		XCTAssertEqual(defaults.float(forKey: UserDefaults.DefaultValueKey.floatValue.rawKey), 0)
 
 		defaults.set(12, for: UserDefaults.Key<Int>("floatValue"))
 		XCTAssertEqual(defaults.float(for: .floatValue), 12)
-		XCTAssertEqual(defaults.float(forKey: UserDefaults.DefaultValueKey.floatValue.key), 12)
+		XCTAssertEqual(defaults.float(forKey: UserDefaults.DefaultValueKey.floatValue.rawKey), 12)
 	}
 }

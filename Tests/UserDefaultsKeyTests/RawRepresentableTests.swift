@@ -1,5 +1,5 @@
 import SwiftUI
-@testable import UserDefaultsKey
+import UserDefaultsKey
 import XCTest
 
 class RawRepresentableTests: TestCase {
@@ -13,12 +13,12 @@ class RawRepresentableTests: TestCase {
 		let view = V()
 		XCTAssertEqual(view.someValue, .second)
 		XCTAssertEqual(defaults.object(for: .someValue), .second)
-		XCTAssertNil(defaults.object(forKey: UserDefaults.DefaultValueKey.someValue.key))
+		XCTAssertNil(defaults.object(forKey: UserDefaults.DefaultValueKey.someValue.rawKey))
 
 		view.someValue = .third
 		XCTAssertEqual(view.someValue, .third)
 		XCTAssertEqual(defaults.object(for: .someValue), .third)
-		XCTAssertEqual(defaults.string(forKey: UserDefaults.DefaultValueKey.someValue.key), SomeValue.third.rawValue)
+		XCTAssertEqual(defaults.string(forKey: UserDefaults.DefaultValueKey.someValue.rawKey), SomeValue.third.rawValue)
 
 		defaults.set(.first, for: .someValue)
 		// It appears that (at least in the test) view.someValue is not updated.
@@ -27,7 +27,7 @@ class RawRepresentableTests: TestCase {
 		XCTAssertEqual(V().someValue, .first)
 
 		XCTAssertEqual(defaults.object(for: .someValue), .first)
-		XCTAssertEqual(defaults.string(forKey: UserDefaults.DefaultValueKey.someValue.key), SomeValue.first.rawValue)
+		XCTAssertEqual(defaults.string(forKey: UserDefaults.DefaultValueKey.someValue.rawKey), SomeValue.first.rawValue)
 	}
 
 	func testTheUnexpected() {
@@ -43,13 +43,13 @@ class RawRepresentableTests: TestCase {
 		view.intValue = 123
 		XCTAssertEqual(view.intValue, 123)
 
-		defaults.set("first", forKey: UserDefaults.DefaultValueKey.someValue.key)
+		defaults.set("first", forKey: UserDefaults.DefaultValueKey.someValue.rawKey)
 		// The real assumption would be `.first`
 		XCTAssertEqual(view.someValue, .third)
 		XCTAssertEqual(V().someValue, .first)
 		XCTAssertEqual(defaults.object(for: .someValue), .first)
 
-		defaults.set(1337, forKey: UserDefaults.DefaultValueKey.intValue.key)
+		defaults.set(1337, forKey: UserDefaults.DefaultValueKey.intValue.rawKey)
 		// The real assumption would be `1337`
 		XCTAssertEqual(view.intValue, 123)
 		XCTAssertEqual(V().intValue, 1337)

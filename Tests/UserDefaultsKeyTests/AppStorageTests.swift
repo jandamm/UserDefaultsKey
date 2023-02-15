@@ -1,5 +1,5 @@
 import SwiftUI
-@testable import UserDefaultsKey
+import UserDefaultsKey
 import XCTest
 
 class AppStorageTests: TestCase {
@@ -17,7 +17,7 @@ class AppStorageTests: TestCase {
 
 		XCTAssertEqual(view.intValue, 42)
 		XCTAssertEqual(defaults.integer(for: .intValue), 42)
-		XCTAssertEqual(defaults.integer(forKey: UserDefaults.DefaultValueKey.intValue.key), 0)
+		XCTAssertEqual(defaults.integer(forKey: UserDefaults.DefaultValueKey.intValue.rawKey), 0)
 
 		view.int = 3
 		XCTAssertEqual(view.int, 3)
@@ -42,6 +42,6 @@ class AppStorageTests: TestCase {
 
 		XCTAssertEqual(view.optionalValue, 42)
 		XCTAssertEqual(defaults.object(for: .optionalValue), 42)
-		XCTAssertEqual(defaults.integer(forKey: UserDefaults.DefaultValueKey.optionalValue.key), 42)
+		XCTAssertEqual(defaults.integer(forKey: UserDefaults.DefaultValueKey.optionalValue.rawKey), 42)
 	}
 }
