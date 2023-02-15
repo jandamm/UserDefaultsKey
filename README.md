@@ -27,6 +27,7 @@ The library takes care of converting `RawRepresentable` as expected.
 ```swift
 extension UserDefaults.Key where Value == Int {
   static let myIntValue = Self("myIntValue")
+  static let myOtherIntValue: Self = "myOtherIntValue"
 }
 
 extension UserDefaults.DefaultValueKey where Value == Int {

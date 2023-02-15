@@ -13,7 +13,7 @@ extension UserDefaults.DefaultValueKey where Value == Int? {
 }
 
 extension UserDefaults.Key where Value == Int {
-	static let int = Self("int")
+	static let int: Self = "int"
 }
 
 extension UserDefaults.Key where Value == Float {

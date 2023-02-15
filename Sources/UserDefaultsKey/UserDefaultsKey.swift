@@ -23,3 +23,9 @@ public extension UserDefaults {
 		}
 	}
 }
+
+extension UserDefaults.Key: ExpressibleByStringLiteral {
+	public init(stringLiteral value: String) {
+		self.init(value)
+	}
+}
