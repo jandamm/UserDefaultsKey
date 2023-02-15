@@ -14,7 +14,7 @@ public extension UserDefaults {
 	}
 
 	func any<Value>(for key: DefaultValueKey<Value>) -> Any {
-		object(forKey: key.key) ?? key.defaultValue()
+		object(forKey: key.key) ?? key.defaultValue
 	}
 
 	/**

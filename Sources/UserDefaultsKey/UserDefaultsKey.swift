@@ -15,11 +15,14 @@ public extension UserDefaults {
 
 	struct DefaultValueKey<Value>: Sendable {
 		let key: String
-		let defaultValue: @Sendable () -> Value
+		private let _defaultValue: @Sendable () -> Value
+
+		/// The value which is used when no value is stored in UserDefaults.
+		public var defaultValue: Value { _defaultValue() }
 
 		public init(_ key: String, defaultValue: @Sendable @escaping @autoclosure () -> Value) {
 			self.key = key
-			self.defaultValue = defaultValue
+			_defaultValue = defaultValue
 		}
 	}
 }
