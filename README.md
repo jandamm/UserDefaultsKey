@@ -31,7 +31,7 @@ extension UserDefaults.Key where Value == Int {
 }
 
 extension UserDefaults.DefaultValueKey where Value == Int {
-  static let myIntValueWithDefault = Self("myIntValueWithDefault", defaultValue: 42)
+  static let myIntValueWithDefault = Self("myIntValueWithDefault", default: 42)
 }
 ```
 

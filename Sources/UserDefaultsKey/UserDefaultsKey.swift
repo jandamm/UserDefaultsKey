@@ -27,7 +27,7 @@ public extension UserDefaults {
 		/// The value which is used when no value is stored in UserDefaults.
 		public var defaultValue: Value { _defaultValue() }
 
-		public init(_ key: String, defaultValue: @Sendable @escaping @autoclosure () -> Value) {
+		public init(_ key: String, default defaultValue: @Sendable @escaping @autoclosure () -> Value) {
 			self.key = key
 			_defaultValue = defaultValue
 		}
