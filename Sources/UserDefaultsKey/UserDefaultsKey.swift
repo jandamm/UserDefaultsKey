@@ -17,18 +17,18 @@ public extension UserDefaults {
 	}
 
 	struct DefaultValueKey<Value>: Sendable {
-		let key: String
+		let key: Key<Value>
 		private let _defaultValue: @Sendable () -> Value
 
 		/// The key used to store in UserDefaults.
 		/// Use this to extend UserDefaults or AppStorage for custom storage strategies.
 		/// It's not recommended to use it to access values.
-		public var rawKey: String { key }
+		public var rawKey: String { key.rawKey }
 		/// The value which is used when no value is stored in UserDefaults.
 		public var defaultValue: Value { _defaultValue() }
 
-		public init(_ key: String, default defaultValue: @Sendable @escaping @autoclosure () -> Value) {
-			self.key = key
+		public init(_ rawKey: String, default defaultValue: @Sendable @escaping @autoclosure () -> Value) {
+			key = .init(rawKey)
 			_defaultValue = defaultValue
 		}
 	}

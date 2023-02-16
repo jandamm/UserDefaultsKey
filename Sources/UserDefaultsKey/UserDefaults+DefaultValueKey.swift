@@ -3,31 +3,31 @@ import Foundation
 public extension UserDefaults {
 	/// -stringForKey: is equivalent to -objectForKey:, except that it will convert NSNumber values to their NSString representation. If a non-string non-number value is found, the default value will be returned.
 	func string(for key: DefaultValueKey<String>) -> String {
-		string(forKey: key.key) ?? key.defaultValue
+		string(for: key.key) ?? key.defaultValue
 	}
 
 	/// -arrayForKey: is equivalent to -objectForKey:, except that it will return the default value if the value is not an NSArray.
 	func array<V>(for key: DefaultValueKey<[V]>) -> [V] {
-		array(forKey: key.key) as? [V] ?? key.defaultValue
+		array(for: key.key) ?? key.defaultValue
 	}
 
 	/// -dictionaryForKey: is equivalent to -objectForKey:, except that it will return the default value if the value is not an NSDictionary.
 	func dictionary<V>(for key: DefaultValueKey<[String: V]>) -> [String: V] {
-		dictionary(forKey: key.key) as? [String: V] ?? key.defaultValue
+		dictionary(for: key.key) ?? key.defaultValue
 	}
 
 	/// -dataForKey: is equivalent to -objectForKey:, except that it will return the default value if the value is not an NSData.
 	func data(for key: DefaultValueKey<Data>) -> Data {
-		data(forKey: key.key) ?? key.defaultValue
+		data(for: key.key) ?? key.defaultValue
 	}
 
 	/// -stringForKey: is equivalent to -objectForKey:, except that it will return the default value if the value is not an NSArray<NSString *>. Note that unlike -stringForKey:, NSNumbers are not converted to NSStrings.
 	func stringArray(for key: DefaultValueKey<[String]>) -> [String] {
-		stringArray(forKey: key.key) ?? key.defaultValue
+		stringArray(for: key.key) ?? key.defaultValue
 	}
 
 	func object<Object>(for key: DefaultValueKey<Object>) -> Object {
-		object(forKey: key.key) as? Object ?? key.defaultValue
+		object(for: key.key) ?? key.defaultValue
 	}
 
 	func integer(for key: DefaultValueKey<Int>) -> Int {
@@ -57,6 +57,6 @@ public extension UserDefaults {
 	 */
 	@available(iOS 4.0, *)
 	func url(for key: DefaultValueKey<URL>) -> URL {
-		url(forKey: key.key) ?? key.defaultValue
+		url(for: key.key) ?? key.defaultValue
 	}
 }
