@@ -1,6 +1,14 @@
 @_exported import Foundation
 
 public extension UserDefaults {
+	func hasObject<Value>(for key: Key<Value>) -> Bool {
+		object(forKey: key.rawKey) != nil
+	}
+
+	func hasObject<Value>(for key: DefaultValueKey<Value>) -> Bool {
+		hasObject(for: key.key)
+	}
+
 	func removeObject<Value>(for key: Key<Value>) {
 		removeObject(forKey: key.rawKey)
 	}
