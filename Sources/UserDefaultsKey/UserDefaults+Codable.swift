@@ -18,7 +18,7 @@ public extension UserDefaults {
 	}
 
 	func codable<Value: Codable>(for key: DefaultValueKey<Value>) -> Value {
-		object(for: key.key) ?? key.defaultValue
+		codable(for: key.key) ?? key.defaultValue
 	}
 
 	func set<Value: Codable>(codable value: Value, for key: Key<Value>) {
@@ -32,6 +32,6 @@ public extension UserDefaults {
 	}
 
 	func set<Value: Codable>(codable value: Value, for key: DefaultValueKey<Value>) {
-		set(value, for: key.key)
+		set(codable: value, for: key.key)
 	}
 }
