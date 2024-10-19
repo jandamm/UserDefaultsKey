@@ -17,8 +17,16 @@ public extension UserDefaults {
 		}
 	}
 
+	func rawData<Value: Codable>(for key: Key<Value>) -> Data? {
+		data(forKey: key.rawKey)
+	}
+
 	func codable<Value: Codable>(for key: DefaultValueKey<Value>) -> Value {
 		codable(for: key.key) ?? key.defaultValue
+	}
+
+	func rawData<Value: Codable>(for key: DefaultValueKey<Value>) -> Data? {
+		data(forKey: key.rawKey)
 	}
 
 	func set<Value: Codable>(codable value: Value, for key: Key<Value>) {
